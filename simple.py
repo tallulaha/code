@@ -10,32 +10,22 @@ def press(button):
     else:
         wakeTime = app.getEntry("wakeTime")
         sleepTime = app.getEntry("sleepTime")
-        neighborhood = app.getOptionBox("neighborhood")
-        sessionPeriod = app.getOptionBox("sessionPeriod")
-        sessionGoal = app.getOptionBox("sessionGoal")
+        feel = app.getOptionBox("How do you want to feel?")
+        makeTime = app.getOptionBox("What do you want to make time for?")
+        distracts = app.getOptionBox("What distracts you most?")
         sessionTime = int(app.getEntry("sessionTime"))
         sessionCount = int(app.getEntry("sessionCount"))
        	dateStart = str(app.getDatePicker("dateStart"))
        	wakeTime += ":00"
        	sleepTime += ":00"
-
-        
-
         print ("date start: ", dateStart)
-
-        #2017-mm-dd
-
-       	print(wakeTime, sleepTime, sessionCount, sessionTime, sessionPeriod,  sessionGoal, dateStart, neighborhood,)
-
-       	# def main(wake, bed, des_days, timelim, timepref,exrgl, startd, neigh):
-       	my_calendar.main(wakeTime,sleepTime,sessionCount,sessionTime,sessionPeriod,sessionGoal,dateStart, neighborhood)
-
+        
        	webbrowser.open_new('https://calendar.google.com/')
 
 
 # create the GUI
-app = gui("What2Wear", "600x700")
-app.addLabel("title", "Welcome to What2Wear!")
+app = gui("Habits", "600x700")
+app.addLabel("title", "Welcome to Habits!")
 app.setFont(18)
 
 app.setFont(12)
@@ -48,11 +38,11 @@ app.addEntry("wakeTime",3,0)
 app.addLabel("sleep", "Sleep Time (eg. 22:30, 24hr time)",2,1)
 app.addEntry("sleepTime",3,1)
 
-app.addLabelOptionBox("neighborhood", ["yard", "river", "quad"],colspan=2)
+app.addLabelOptionBox("How do you want to feel?", ["energized", "relaxed", "motivated"],colspan=2)
 
-app.addLabelOptionBox("sessionPeriod", ["morning", "afternoon", "evening"],colspan=2)
+app.addLabelOptionBox("What do you want to make time for?", ["exercise", "sleep", "friends","meals","me-time","reading"],colspan=2)
 
-app.addLabelOptionBox("sessionGoal", ["strength", "cardio"],colspan=2)
+app.addLabelOptionBox("What distracts you most?", ["phone", "friends", "work", "news"],colspan=2)
 
 app.addLabel("sTime", "Average Session Length (min)",7,0)
 app.addNumericEntry("sessionTime",8,0)
